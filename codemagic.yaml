@@ -12,6 +12,10 @@ workflows:
         script: flutter create .
       - name: Fix compileSdkVersion to 34
         script: perl -pi -e 's/.*flutter\.compileSdkVersion.*/compileSdkVersion 34/' android/app/build.gradle
+      - name: Fix Kotlin version to 1.9.22
+        script: |
+          perl -pi -e 's/org.jetbrains.kotlin.android" version "[^"]*"/org.jetbrains.kotlin.android" version "1.9.22"/' android/settings.gradle
+          perl -pi -e 's/ext.kotlin_version = "[^"]*"/ext.kotlin_version = "1.9.22"/' android/build.gradle
       - name: Install Flutter dependencies
         script: flutter pub get
       - name: Build debug APK
