@@ -1,0 +1,17 @@
+name: lucid_dream_app
+description: 清醒梦训练助手
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.2.2
+  workmanager: ^0.5.1
+  flutter_local_notifications: ^16.1.0
+  intl: ^0.18.1
+
+flutter:
+  uses-material-design: true
