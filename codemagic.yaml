@@ -8,6 +8,8 @@ workflows:
       xcode: latest
       cocoapods: default
     scripts:
+      - name: Generate platform files
+        script: flutter create .
       - name: Install Flutter dependencies
         script: flutter pub get
       - name: Build debug APK
