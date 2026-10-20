@@ -11,7 +11,7 @@ workflows:
       - name: Generate platform files
         script: flutter create .
       - name: Fix compileSdkVersion to 34
-        script: sed -i 's/compileSdkVersion flutter.compileSdkVersion/compileSdkVersion 34/g' android/app/build.gradle
+        script: perl -pi -e 's/.*flutter\.compileSdkVersion.*/compileSdkVersion 34/' android/app/build.gradle
       - name: Install Flutter dependencies
         script: flutter pub get
       - name: Build debug APK
