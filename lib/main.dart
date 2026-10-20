@@ -186,21 +186,21 @@ class _HomePageState extends State<HomePage> {
       taskKey,
       initialDelay: Duration(hours: _calcDelay(10)),
       frequency: const Duration(hours: 24),
-      existsOnlyOnce: true,
+      existingWorkPolicy: ExistingWorkPolicy.keep,
     );
     await Workmanager().registerPeriodicTask(
       "remind15",
       taskKey,
       initialDelay: Duration(hours: _calcDelay(15)),
       frequency: const Duration(hours: 24),
-      existsOnlyOnce: true,
+      existingWorkPolicy: ExistingWorkPolicy.keep,
     );
     await Workmanager().registerPeriodicTask(
       "remind19",
       taskKey,
       initialDelay: Duration(hours: _calcDelay(19)),
       frequency: const Duration(hours: 24),
-      existsOnlyOnce: true,
+      existingWorkPolicy: ExistingWorkPolicy.keep,
     );
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -208,11 +208,11 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  double _calcDelay(int targetHour) {
+  int _calcDelay(int targetHour) {
     final now = DateTime.now();
     var next = DateTime(now.year, now.month, now.day, targetHour);
     if (next.isBefore(now)) next = next.add(const Duration(days: 1));
-    return next.difference(now).inHours.toDouble();
+    return next.difference(now).inHours;
   }
 
   @override
